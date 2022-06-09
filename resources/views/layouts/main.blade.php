@@ -39,7 +39,8 @@ The above copyright notice and this permission notice shall be included in all c
 <body class="">
 <div class="wrapper ">
         <div id="app">
-            <app></app>
+            <app notifications-url="{{ route('notifications.latest') }}">
+            </app>
         </div>
 </div>
 
