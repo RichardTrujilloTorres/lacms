@@ -18,6 +18,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('notifications', [\App\Http\Controllers\API\NotificationsController::class, 'latest'])
+    ->name('notifications.latest');
+
 
 Route::prefix('settings')
     ->as('settings.')
