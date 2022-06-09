@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('{any}', [\App\Http\Controllers\SPAController::class, '__invoke'])
+    ->where('any', '.*')
+    ->name('app');
+
+//Auth::routes();
+
