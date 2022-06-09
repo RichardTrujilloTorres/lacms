@@ -4,7 +4,7 @@
             <nav class="float-left">
                 <ul>
                     <li>
-                        <a href="https://www.creative-tim.com">
+                        <a href="">
                             Creative Tim
                         </a>
                     </li>
@@ -14,12 +14,12 @@
                         </a>
                     </li>
                     <li>
-                        <a href="http://blog.creative-tim.com">
+                        <a href="">
                             Blog
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.creative-tim.com/license">
+                        <a href="">
                             Licenses
                         </a>
                     </li>
@@ -30,7 +30,8 @@
 <!--                <script>-->
 <!--                    document.write(new Date().getFullYear())-->
 <!--                </script>, made with <i class="material-icons">favorite</i> by-->
-                <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+                {{ currentYear }}
+<!--                <a href="" target="_blank"></a> for a better web.-->
             </div>
         </div>
     </footer>
@@ -43,10 +44,12 @@ export default {
     computed: {
         appName() {
             return window.appName
-        }
+        },
+        currentYear() {
+            return new Date().getFullYear()
+        },
     },
     mounted() {
-        console.log('footer')
     }
 }
 </script>

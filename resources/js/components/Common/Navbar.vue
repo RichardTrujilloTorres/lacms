@@ -37,19 +37,20 @@
                 </a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="material-icons">notifications</i>
-                    <span class="notification">5</span>
+                    <span class="notification">{{ totalNotifications }}</span>
                     <p class="d-lg-none d-md-block">
                         Some Actions
                     </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                    <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                    <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                    <a class="dropdown-item" href="#">Another Notification</a>
-                    <a class="dropdown-item" href="#">Another One</a>
+                    <a class="dropdown-item" href="" v-for="notification in notifications">{{ notification.title }}</a>
+<!--                    <a class="dropdown-item" href="#">Mike John responded to your email</a>-->
+<!--                    <a class="dropdown-item" href="#">You have 5 new tasks</a>-->
+<!--                    <a class="dropdown-item" href="#">You're now friend with Andrew</a>-->
+<!--                    <a class="dropdown-item" href="#">Another Notification</a>-->
+<!--                    <a class="dropdown-item" href="#">Another One</a>-->
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -76,14 +77,37 @@
 <script>
 export default {
     props: {
+        notificationsUrl: {
+            type: String,
+            required: true,
+        },
     },
+    data: () => ({
+        notifications: [],
+    }),
     computed: {
         appName() {
             return window.appName
-        }
+        },
+        totalNotifications() {
+            return this.notifications.length
+        },
     },
     mounted() {
-        console.log('navbar')
-    }
+        this.getNotifications()
+    },
+    methods: {
+        getNotifications() {
+            window.axios.get(`${this.notificationsUrl}`)
+            .then(res => {
+                // console.log(res)
+                this.notifications = res.data.notifications
+            })
+            .catch(err => {
+                // TODO toast w/ error message
+                console.log(err)
+            })
+        },
+    },
 }
 </script>
