@@ -9,6 +9,7 @@ require('./bootstrap');
 window.Vue = require('vue').default;
 
 import VueRouter from "vue-router";
+import Toasted from 'vue-toasted';
 import routes from './routes.js';
 
 /**
@@ -51,6 +52,8 @@ const router = new VueRouter({
     routes,
 })
 Vue.use(VueRouter)
+
+Vue.use(Toasted)
 
 const app = new Vue({
     router,
