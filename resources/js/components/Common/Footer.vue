@@ -4,18 +4,13 @@
             <nav class="float-left">
                 <ul>
                     <li>
-                        <a href="">
-                            Creative Tim
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://creative-tim.com/presentation">
-                            About Us
-                        </a>
+                        <router-link to="/">
+                            {{ appName }}
+                        </router-link>
                     </li>
                     <li>
                         <a href="">
-                            Blog
+                            About
                         </a>
                     </li>
                     <li>
