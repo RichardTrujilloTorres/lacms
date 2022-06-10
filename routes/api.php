@@ -34,3 +34,10 @@ Route::prefix('settings')
                     ->name('update');
             });
     });
+
+Route::prefix('users')
+    ->as('users.')
+    ->group(function() {
+        Route::get('', [\App\Http\Controllers\API\UsersController::class, 'index'])
+            ->name('index');
+    });
