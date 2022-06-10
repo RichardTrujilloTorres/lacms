@@ -1,14 +1,14 @@
 <template>
-    <div class="sidebar" data-color="rose" data-background-color="black" data-image="/assets/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="rose" data-background-color="black" data-image="/assets/img/lighthouse-1.jpg">
         <!--
           Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
           Tip 2: you can also add an image using data-image tag
       -->
         <div class="logo">
-            <router-link class="simple-text logo-normal" to="/">
-                {{ appName }}
-            </router-link>
+            <a class="simple-text logo-normal" href="">
+                 {{ appName }}
+            </a>
         </div>
         <div class="sidebar-wrapper">
 
@@ -21,7 +21,7 @@
 <!--              <span>-->
 <!--                Tania Andrew-->
 <!--                <b class="caret"></b>-->
-<!--              </span>-->gg
+<!--              </span>-->
 <!--                    </a>-->
 <!--                    <div class="collapse" id="collapseExample">-->
 <!--                        <ul class="nav">-->
@@ -50,10 +50,10 @@
 
             <ul class="nav">
                 <li class="nav-item active ">
-                    <a class="nav-link" href="../examples/dashboard.html">
+                    <router-link class="nav-link" to="/">
                         <i class="material-icons">dashboard</i>
                         <p> Dashboard </p>
-                    </a>
+                    </router-link>
                 </li>
 
                 <li class="nav-item ">
@@ -67,10 +67,10 @@
                     <div class="collapse" id="pagesExamples">
                         <ul class="nav">
                             <li class="nav-item ">
-                                <a class="nav-link" href="">
-                                    <span class="sidebar-mini"> P </span>
-                                    <span class="sidebar-normal"> List </span>
-                                </a>
+                                <router-link class="nav-link" to="/users/list">
+                                    <i class="material-icons">list</i>
+                                    <p> List </p>
+                                </router-link>
                             </li>
 <!--                            <li class="nav-item ">-->
 <!--                                <a class="nav-link" href="../examples/pages/user.html">-->
