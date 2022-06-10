@@ -61,6 +61,7 @@ export default {
             })
             .then(res => {
                 console.log(res.data)
+                this.$toasted.show(`Status updated.`, {duration: 3000})
             })
             .catch(err => {
                 console.log(err)
