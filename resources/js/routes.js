@@ -3,11 +3,19 @@ import Posts from "./components/Pages/Posts";
 import PageNotFound from "./components/Pages/PageNotFound";
 import User from "./components/Pages/User";
 import DoNotDisturb from "./components/Pages/DoNotDisturb";
+import UserList from "./components/Pages/UserList";
 
 
 const routes = [
     { path: '/', component: Dashboard },
     { path: '/posts', component: Posts },
+    {
+        path: '/users/list',
+        component: UserList,
+        props: {
+            usersUrl: `${process.env.MIX_APP_URL}/api/users`,
+        },
+    },
     { path: '/users/:id', component: User },
     {
         path: '/settings/do-not-disturb',
