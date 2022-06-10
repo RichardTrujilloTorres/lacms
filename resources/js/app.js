@@ -49,6 +49,7 @@ Vue.component('app', require('./components/App.vue').default);
 
 
 const router = new VueRouter({
+    mode: 'history',
     routes,
 })
 Vue.use(VueRouter)
