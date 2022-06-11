@@ -84,7 +84,7 @@ export default {
     },
     computed: {
         enabledStatus() {
-            return this.enabled ? `Enabled` : 'Disabled'
+            return this.doNotDisturb.enabled ? `Enabled` : 'Disabled'
         },
     },
     mounted() {
