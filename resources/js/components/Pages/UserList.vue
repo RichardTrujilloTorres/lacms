@@ -15,18 +15,24 @@
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead class=" text-primary">
-                                    <th>
-                                        ID
-                                    </th>
-                                    <th>
-                                        Name
-                                    </th>
-                                    <th>
-                                        Email
-                                    </th>
-                                    <th>
-                                        Verified
-                                    </th>
+                                    <tr>
+                                        <th>
+                                            ID
+                                        </th>
+                                        <th>
+                                            Name
+                                        </th>
+                                        <th>
+                                            Email
+                                        </th>
+                                        <th>
+                                            Verified
+                                        </th>
+                                        <th>
+                                            Actions
+                                        </th>
+                                    </tr>
+
                                     </thead>
                                     <tbody>
                                     <tr v-for="user in users">
@@ -41,6 +47,14 @@
                                         </td>
                                         <td>
                                             {{ user.email_verified_at ? `Yes` : `No` }}
+                                        </td>
+                                        <td class="td-actions text-right">
+                                            <router-link :to="{ name: 'userDetail', params: {id: user.id} }" type="button" rel="tooltip" class="btn btn-success btn-link">
+                                                <i class="material-icons">edit</i>
+                                            </router-link>
+                                            <button @click="onShowDeleteConfirmation(user.id)" type="button" rel="tooltip" class="btn btn-danger btn-link">
+                                                <i class="material-icons">close</i>
+                                            </button>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -122,6 +136,38 @@ export default {
             (Number(currentPage < basePage)) ?
                 currentPage:
                 basePage
+        },
+        onShowDeleteConfirmation(userId) {
+            this.$toasted.show(`You're about to delete this user`, {
+                icon: 'warning',
+                action: [
+                    {
+                        text: 'Confirm?',
+                        onClick: (e, toastObject) => {
+                            toastObject.goAway(0)
+                            this.onDelete(userId)
+                        },
+                    },
+                    {
+                        text: 'Cancel',
+                        onClick: (e, toastObject) => {
+                            toastObject.goAway(0)
+                        },
+                    },
+                ],
+            })
+        },
+        onDelete(userId)
+        {
+            window.axios.delete(`${this.usersUrl}/${userId}`)
+                .then(res => {
+                    this.$toasted.success(`User deleted!`, {duration: 3000})
+                    this.getUsers()
+                })
+                .catch(err => {
+                    console.log(err)
+                    this.$toasted.error(`Could not delete the specified user.`, {duration: 3000})
+                })
         },
     },
     computed: {
