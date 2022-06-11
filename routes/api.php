@@ -57,4 +57,10 @@ Route::prefix('users')
     ->group(function() {
         Route::get('', [\App\Http\Controllers\API\UsersController::class, 'index'])
             ->name('index');
+        Route::get('{user}', [\App\Http\Controllers\API\UsersController::class, 'show'])
+            ->name('show');
+        Route::put('{user}', [\App\Http\Controllers\API\UsersController::class, 'update'])
+            ->name('update');
+        Route::delete('{user}', [\App\Http\Controllers\API\UsersController::class, 'delete'])
+            ->name('delete');
     });
