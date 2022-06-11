@@ -5,6 +5,7 @@ import User from "./components/Pages/User";
 import DoNotDisturb from "./components/Pages/DoNotDisturb";
 import UserList from "./components/Pages/UserList";
 import NotificationDetail from "./components/Pages/NotificationDetail";
+import Sync from "./components/Pages/Sync";
 
 
 const routes = [
@@ -23,6 +24,13 @@ const routes = [
         component: DoNotDisturb,
         props: {
             actionUrl: `${process.env.MIX_APP_URL}/api/settings/do-not-disturb`,
+        },
+    },
+    {
+        path: '/settings/sync',
+        component: Sync,
+        props: {
+            actionUrl: `${process.env.MIX_APP_URL}/api/settings/sync`,
         },
     },
     {
