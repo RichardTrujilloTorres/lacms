@@ -18,8 +18,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('notifications', [\App\Http\Controllers\API\NotificationsController::class, 'latest'])
-    ->name('notifications.latest');
+
+Route::prefix('notifications')
+    ->as('notifications.')
+    ->group(function() {
+        Route::get('', [\App\Http\Controllers\API\NotificationsController::class, 'latest'])
+            ->name('latest');
+        Route::get('{notification}', [\App\Http\Controllers\API\NotificationsController::class, 'show'])
+            ->name('show');
+        Route::put('{notification}', [\App\Http\Controllers\API\NotificationsController::class, 'markAsRead'])
+            ->name('mark-as-read');
+    });
 
 
 Route::prefix('settings')
