@@ -21,11 +21,11 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <form @submit.prevent="onSubmit">
+                            <form @submit.prevent="onSubmit" v-show="doNotDisturb.loaded">
                                 <div class="form-group">
                                     <div class="togglebutton">
                                         <label>
-                                            <input v-model="enabled" type="checkbox" checked="">
+                                            <input v-model="doNotDisturb.enabled" type="checkbox" checked="">
                                             <span class="toggle"></span>
                                             {{ enabledStatus }}
                                         </label>
@@ -52,12 +52,15 @@ export default {
         },
     },
     data: () => ({
-        enabled: false,
+        doNotDisturb: {
+            enabled: false,
+            loaded: false,
+        },
     }),
     methods: {
         onSubmit() {
             window.axios.put(`${this.actionUrl}`, {
-                status: this.enabled,
+                status: this.doNotDisturb.enabled,
             })
             .then(res => {
                 console.log(res.data)
@@ -71,7 +74,8 @@ export default {
             window.axios.get(`${this.actionUrl}`)
                 .then(res => {
                     console.log(res)
-                    this.enabled = res.data.data.status === 'on'
+                    this.doNotDisturb.enabled = res.data.data.status === 'on'
+                    this.doNotDisturb.loaded = true
                 })
                 .catch(err => {
                     console.log(err)
