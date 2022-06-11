@@ -41,6 +41,10 @@ Vue.component('pages_posts', require('./components/Pages/Posts.vue').default);
 Vue.component('pages_page-not-found', require('./components/Pages/PageNotFound.vue').default);
 Vue.component('pages_user', require('./components/Pages/User.vue').default);
 
+/**
+ * Notification
+ */
+Vue.component('notification_card', require('./components/Notification/NotificationCard.vue').default);
 
 Vue.component('app', require('./components/App.vue').default);
 
