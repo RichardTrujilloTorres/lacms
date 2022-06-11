@@ -39,18 +39,14 @@
             <li class="nav-item dropdown">
                 <a class="nav-link" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="material-icons">notifications</i>
-                    <span class="notification">{{ totalNotifications }}</span>
+                    <span v-show="notifications.length" class="notification">{{ totalNotifications }}</span>
                     <p class="d-lg-none d-md-block">
                         Some Actions
                     </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="" v-for="notification in notifications">{{ notification.title }}</a>
-<!--                    <a class="dropdown-item" href="#">Mike John responded to your email</a>-->
-<!--                    <a class="dropdown-item" href="#">You have 5 new tasks</a>-->
-<!--                    <a class="dropdown-item" href="#">You're now friend with Andrew</a>-->
-<!--                    <a class="dropdown-item" href="#">Another Notification</a>-->
-<!--                    <a class="dropdown-item" href="#">Another One</a>-->
+                    <router-link v-show="notifications.length" class="dropdown-item" :to="{ name: 'notificationDetail', params: { id: notification.id } }" v-for="notification in notifications" :key="notification.id">{{ notification.title }}</router-link>
+                    <a v-show="!notifications.length" class="dropdown-item">All notifications read.</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -100,11 +96,10 @@ export default {
         getNotifications() {
             window.axios.get(`${this.notificationsUrl}`)
             .then(res => {
-                // console.log(res)
                 this.notifications = res.data.notifications
             })
             .catch(err => {
-                // TODO toast w/ error message
+                this.$toasted.error(`Could not load notifications.`, {duration: 3000})
                 console.log(err)
             })
         },
