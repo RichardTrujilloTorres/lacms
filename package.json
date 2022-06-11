@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "autoprefixer": "10.4.5",
+        "mitt": "^3.0.0",
         "vue-router": "^3.5.4",
         "vue-toasted": "^1.1.28"
     }

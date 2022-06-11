@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import mitt from "mitt";
+
 require('./bootstrap');
 
 window.Vue = require('vue').default;
@@ -48,7 +50,6 @@ Vue.component('app', require('./components/App.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-
 const router = new VueRouter({
     mode: 'history',
     routes,
@@ -56,6 +57,9 @@ const router = new VueRouter({
 Vue.use(VueRouter)
 
 Vue.use(Toasted)
+
+
+export const emitter = mitt()
 
 const app = new Vue({
     router,
