@@ -42,6 +42,14 @@ Route::prefix('settings')
                 Route::put('', [\App\Http\Controllers\API\DoNotDisturbController::class, 'update'])
                     ->name('update');
             });
+        Route::prefix('sync')
+            ->as('sync.')
+            ->group(function () {
+                Route::get('', [\App\Http\Controllers\API\SyncController::class, 'lastUpdatedAt'])
+                    ->name('last-updated-at');
+                Route::post('', [\App\Http\Controllers\API\SyncController::class, 'syncNow'])
+                    ->name('sync-now');
+            });
     });
 
 Route::prefix('users')
