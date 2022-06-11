@@ -27,7 +27,6 @@ class DoNotDisturbController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Setting updated.',
-            'send value' => $doNotDisturbStatus,
         ], Response::HTTP_CREATED);
     }
 
