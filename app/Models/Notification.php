@@ -14,5 +14,11 @@ class Notification extends Model
     protected $fillable = [
         'title',
         'body',
+        'viewed',
     ];
+
+    public function scopeNotViewed($query)
+    {
+        return $query->where('viewed', false);
+    }
 }
