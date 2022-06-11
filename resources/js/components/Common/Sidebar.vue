@@ -82,6 +82,33 @@
                     </div>
                 </li>
 
+                <!-- posts -->
+                <li class="nav-item ">
+                    <a class="nav-link" data-toggle="collapse" href="#postList">
+                        <i class="material-icons">notes</i>
+                        <p> Posts
+                            <b class="caret"></b>
+                        </p>
+                    </a>
+
+                    <div class="collapse" id="postList">
+                        <ul class="nav">
+                            <li class="nav-item ">
+                                <router-link class="nav-link" to="/posts/list">
+                                    <i class="material-icons">list</i>
+                                    <p> List </p>
+                                </router-link>
+                            </li>
+                            <!--                            <li class="nav-item ">-->
+                            <!--                                <a class="nav-link" href="../examples/pages/user.html">-->
+                            <!--                                    <span class="sidebar-mini"> UP </span>-->
+                            <!--                                    <span class="sidebar-normal"> User Profile </span>-->
+                            <!--                                </a>-->
+                            <!--                            </li>-->
+                        </ul>
+                    </div>
+                </li>
+
 
                 <li class="nav-item ">
                     <a class="nav-link" data-toggle="collapse" href="#settings">
