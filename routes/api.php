@@ -64,3 +64,16 @@ Route::prefix('users')
         Route::delete('{user}', [\App\Http\Controllers\API\UsersController::class, 'delete'])
             ->name('delete');
     });
+
+Route::prefix('posts')
+    ->as('posts.')
+    ->group(function() {
+        Route::get('', [\App\Http\Controllers\API\PostsController::class, 'index'])
+            ->name('index');
+        Route::get('{post}', [\App\Http\Controllers\API\PostsController::class, 'show'])
+            ->name('show');
+        Route::put('{post}', [\App\Http\Controllers\API\PostsController::class, 'update'])
+            ->name('update');
+        Route::delete('{post}', [\App\Http\Controllers\API\PostsController::class, 'delete'])
+            ->name('delete');
+    });
