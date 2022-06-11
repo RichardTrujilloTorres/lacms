@@ -18,7 +18,14 @@ const routes = [
             usersUrl: `${process.env.MIX_APP_URL}/api/users`,
         },
     },
-    { path: '/users/:id', component: User },
+    {
+        name: 'userDetail',
+        path: '/users/:id',
+        component: User,
+        props: {
+            usersUrl: `${process.env.MIX_APP_URL}/api/users`,
+        },
+    },
     {
         path: '/settings/do-not-disturb',
         component: DoNotDisturb,
