@@ -15,7 +15,7 @@ class DoNotDisturbController extends Controller
         /**
          * @var Setting $doNotDisturbSetting
          */
-        $doNotDisturbSetting = Setting::where('name', 'do_not_disturb')->first();
+        $doNotDisturbSetting = Setting::where('name', Setting::DO_NOT_DISTURB_KEY)->first();
         $doNotDisturbStatus = (bool)$doNotDisturb->status ?
             Setting::DO_NOT_DISTURB_STATUS_ON :
             Setting::DO_NOT_DISTURB_STATUS_OFF;
@@ -36,7 +36,7 @@ class DoNotDisturbController extends Controller
         /**
          * @var Setting $doNotDisturbSetting
          */
-        $doNotDisturbSetting = Setting::where('name', 'do_not_disturb')->first();
+        $doNotDisturbSetting = Setting::where('name', Setting::DO_NOT_DISTURB_KEY)->first();
 
         return response()->json([
             'status' => 'success',
